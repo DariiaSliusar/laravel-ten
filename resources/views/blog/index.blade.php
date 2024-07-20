@@ -10,7 +10,7 @@
 
    @include('blog.filter')
 
-    @if(empty($posts))
+    @if($posts->isEmpty())
         {{ __('No posts') }}
     @else
         <div class="row">
@@ -20,6 +20,8 @@
                 </div>
             @endforeach
         </div>
+
+        {{ $posts->links() }}
     @endif
 
 @endsection

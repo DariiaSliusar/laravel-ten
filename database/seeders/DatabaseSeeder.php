@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Donate;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +19,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        for($i = 0; $i < 10000; $i++) {
+            Donate::query()->forceCreate([
+                'created_at' => now()->subDays(rand(0, 1000)),
+                'amount' => rand(1, 1000),
+            ]);
+        }
     }
 }

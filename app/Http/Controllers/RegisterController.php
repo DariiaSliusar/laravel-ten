@@ -15,16 +15,15 @@ class RegisterController extends Controller
 
     public function store(UserStoreRequest $request)
     {
-//      dd($request['name']);
-//        $user = User::create([
-//            'name' => $request['name'],
-//            'email' => $request['email'],
-//            'password' => bcrypt($request['password']),
-//        ]);
+//        dd(User::query());
 
-        $user = User::create(['name' => 'jibdvdsf', 'email' => 'kli@hmnjk.com', 'password' => bcrypt('password')]);
+        $user = User::query()->create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
 
-        dd($user);
+//        dd($user->toArray());
 
         return redirect()->route('user');
     }
