@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('donates', function (Blueprint $table) {
             $table->id();
-//            $table->decimal('currency_if')->unsigned();
+            $table->string('currency_id');
+            $table->foreign('currency_id')->references('id')->on('currencies');
             $table->decimal('amount')->unsigned();
             $table->timestamps();
         });
